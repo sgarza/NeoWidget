@@ -1,12 +1,27 @@
 {
   "name": "neowidget",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Virtual DOM based Widget for Neon.js",
   "repository" : "https://github.com/sgarza/NeoWidget",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "react",
+    "jsx",
+    "transform",
+    "webpack",
+    "neon",
+    "virtual-dom",
+    "virtual dom",
+    "dom",
+    "vtree",
+    "diff",
+    "patch",
+    "widget",
+    "neonode"
+  ],
   "author": "Sergio de la Garza <sergio@delagarza.io> (http://delagarza.io)",
   "license": "ISC",
   "dependencies": {
