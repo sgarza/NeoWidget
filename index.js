@@ -197,6 +197,17 @@ var NeoWidget = Class('NeoWidget').includes(CustomEvent, CustomEventSupport, Nod
     **/
     update : function(state) {
       this.dispatch('beforeUpdate');
+
+      if (state.constructor === Object) {
+        for (var property in state) {
+          this.state[property] = state[propery];
+        }
+      } else if (state.constructor === Array) {
+        this.state = this.state.concat(state);
+      } else {
+        this.state = state;
+      }
+
       this.state = state;
 
       var newTree = this.build();
