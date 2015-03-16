@@ -2,7 +2,7 @@
 
 ## Requirements
 
-NeoWidget uses JSX to define DOM Trees, so you will need (jsx-transform-loader)(https://www.npmjs.com/package/jsx-transform-loader) for webpack or something based on [jsx-transform](https://www.npmjs.com/package/jsx-transform).
+NeoWidget uses JSX to define DOM Trees, so you will need [jsx-transform-loader](https://www.npmjs.com/package/jsx-transform-loader) for webpack or something based on [jsx-transform](https://www.npmjs.com/package/jsx-transform).
 
 ## Usage:
 
