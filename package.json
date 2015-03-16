@@ -1,8 +1,8 @@
 {
   "name": "neowidget",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Virtual DOM based Widget for Neon.js",
-  "repository" : "git@github.com:sgarza/NeoWidget.git",
+  "repository" : "https://github.com/sgarza/NeoWidget",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
