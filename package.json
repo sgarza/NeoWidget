@@ -1,0 +1,15 @@
+{
+  "name": "neowidget",
+  "version": "1.0.0",
+  "description": "Virtual DOM based Widget for Neon.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sergio de la Garza <sergio@delagarza.io> (http://delagarza.io)",
+  "license": "ISC",
+  "dependencies": {
+    "neon": "^2.0.0",
+    "virtual-dom": "^2.0.1"
+  }
+}
