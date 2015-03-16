@@ -10,9 +10,7 @@ NeoWidget uses JSX to define DOM Trees, so you will need [jsx-transform-loader](
 npm install -save neowidget
 ```
 
-## Webpack Example
-
-### React
+### Webpack Example
 
 webpack.config.js
 ```js
