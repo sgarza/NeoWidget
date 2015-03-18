@@ -208,8 +208,6 @@ var NeoWidget = Class('NeoWidget').includes(CustomEvent, CustomEventSupport, Nod
         this.state = state;
       }
 
-      this.state = state;
-
       var newTree = this.build();
       var patches = this.constructor.diff(this.vDom, newTree);
       this.element = this.constructor.patch(this.element, patches);
