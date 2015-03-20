@@ -2,9 +2,9 @@
 
 ## Requirements
 
-NeoWidget uses JSX to define DOM Trees, so you will need [jsx-transform-loader](https://www.npmjs.com/package/jsx-transform-loader) for webpack or something based on [jsx-transform](https://www.npmjs.com/package/jsx-transform).
+NeoWidget uses JSX to define DOM Trees, so you will need [jsx-transform-loader](https://www.npmjs.com/package/jsx-transform-loader) for webpack, [jsxtransformify](https://www.npmjs.com/package/jsxtransformify) for Browserify or something based on [jsx-transform](https://www.npmjs.com/package/jsx-transform) to preprocess JSX.
 
-## Usage:
+## Setup:
 
 ```
 npm install -save neowidget
@@ -16,6 +16,17 @@ webpack.config.js
 ```js
 {..., loader: 'jsx-transform-loader'}
 ```
+
+
+### Browserify Example
+
+```
+npm install -save jsxtransformify
+
+browserify -t jsxtransformify file.js -o output.js
+```
+
+### Usage Example
 
 You need to specify the @docblock in the files where you use JSX: /** @jsx NeoWidget.h */
 

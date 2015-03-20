@@ -1,6 +1,6 @@
 {
   "name": "neowidget",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Virtual DOM based Widget for Neon.js",
   "repository" : "https://github.com/sgarza/NeoWidget",
   "main": "index.js",
@@ -20,7 +20,8 @@
     "diff",
     "patch",
     "widget",
-    "neonode"
+    "neonode",
+    "browserify"
   ],
   "author": "Sergio de la Garza <sergio@delagarza.io> (http://delagarza.io)",
   "license": "ISC",
