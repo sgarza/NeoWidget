@@ -1,6 +1,6 @@
 {
   "name": "neowidget",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Virtual DOM based Widget for Neon.js",
   "repository" : "https://github.com/sgarza/NeoWidget",
   "main": "index.js",

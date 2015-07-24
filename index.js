@@ -200,7 +200,7 @@ var NeoWidget = Class('NeoWidget').includes(CustomEvent, CustomEventSupport, Nod
 
       if (state.constructor === Object) {
         for (var property in state) {
-          this.state[property] = state[propery];
+          this.state[property] = state[property];
         }
       } else if (state.constructor === Array) {
         this.state = this.state.concat(state);
