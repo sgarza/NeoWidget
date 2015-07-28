@@ -38,13 +38,13 @@ myWidgetInstance.render(document.body);
 like this widget does renders does not display anything so lets give it something to display first
 
 var Heading = Class('Heading').inherits(NeoWidget)({
-  state : {
+   data: {
     title : 'Heading Title'
   }
 
-  build : function() {
+  template : function() {
     return <div>
-            <h2>{this.state.title}</h2>
+            <h2>{this.data.title}</h2>
           </div>
   }
 });
@@ -52,49 +52,47 @@ var Heading = Class('Heading').inherits(NeoWidget)({
 var myWidgetInstance = new Heading();
 myWidgetInstance.render(document.body);
 
-Now to update the widget state:
+Now to update the widget data:
 
 myWidgetInstance.update({title : 'Some other Heading Title'});
 
 Now with compositon:
 
 var Heading = Class('Heading').inherits(NeoWidget)({
-  state : {
+  data : {
     title : 'Heading Title'
   }
 
-  build : function() {
+  template : function() {
     return <div>
-            <h2>{this.state.title}</h2>
+            <h2>{this.data.title}</h2>
           </div>
   }
 });
 
 Class('Button').inherits(NeoWidget)({
   prototype : {
-    state : {
+    data : {
       title : 'Click Me!',
       count : 0
     },
-    build : function() {
+    template : function() {
       return  <div>
-                {new <Heading />.vDom}
-                <button onclick={this.clickHandler.bind(this)}>{this.state.title}</button>
-                <p>{'Clicks: ' + this.state.count}</p>
+                {new <Heading />.virtualNode}
+                <button onclick={this.clickHandler.bind(this)}>{this.data.title}</button>
+                <p>{'Clicks: ' + this.data.count}</p>
               </div>
     },
 
     clickHandler : function() {
-      this.state.count++
-      this.update(this.state);
+      this.data.count++
+      this.update(this.data);
     }
   }
 });
 
 var widget = new Button()
 widget.render(document.body);
-
-NeoWidget uses a paradigm much like ReactJS but with a much simpler API
 
 
 @class NeoWidget
@@ -143,24 +141,24 @@ var NeoWidget = Class('NeoWidget').includes(CustomEvent, CustomEventSupport, Nod
   **/
   prototype : {
     /**
-    Holds the active current state of the widget
-    @property state <public> [String || Number || Array || Object] (null)
+    Holds the active current data of the widget
+    @property data <public> [String || Number || Array || Object] (null)
     **/
-    state : null,
+    data : null,
 
     /**
     virtual-dom exposes a set of objects designed for representing DOM nodes.
     A "Document Object Model Model" might seem like a strange term, but it is exactly that.
-    It's a native JavaScript tree structure that represents a native DOM node tree. We call this a vDom
-    @property vDom <public> [Instance] (null)
+    It's a native JavaScript tree structure that represents a native DOM node tree. We call this a virtualNode
+    @property virtualNode <public> [Instance] (null)
     **/
-    vDom  : null,
+    virtualNode  : null,
 
     /**
 
-    @property element <public> [HTMLElement] (null)
+    @property HTMLElement <public> [HTMLElement] (null)
     **/
-    element : null,
+    HTMLElement : null,
 
 
     init : function init(config){
@@ -169,20 +167,20 @@ var NeoWidget = Class('NeoWidget').includes(CustomEvent, CustomEventSupport, Nod
           this[propertyName] = config[propertyName];
       }, this);
 
-      this.vDom = this.build();
-      this.element = createElement(this.vDom);
+      this.virtualNode = this.template();
+      this.HTMLElement = createElement(this.virtualNode);
 
       return this
     },
 
     /**
-    Public build method.
+    Public template method.
     You must override this method .
-    @property build <public> [Function]
+    @property template <public> [Function]
     @method
     @return this [NeoWidget]
     **/
-    build : function build() {
+    template : function template() {
       return  <div>
               </div>
     },
@@ -192,26 +190,26 @@ var NeoWidget = Class('NeoWidget').includes(CustomEvent, CustomEventSupport, Nod
     overriden.
     @property update <public> [Function]
     @method
-    @argument state <required> [this.state] (undefined) This is the new state for the widget
+    @argument data <required> [this.data] (undefined) This is the new data for the widget
     @return this [NeoWidget]
     **/
-    update : function(state) {
+    update : function(data) {
       this.dispatch('beforeUpdate');
 
-      if (state.constructor === Object) {
-        for (var property in state) {
-          this.state[property] = state[property];
+      if (data.constructor === Object) {
+        for (var property in data) {
+          this.data[property] = data[property];
         }
-      } else if (state.constructor === Array) {
-        this.state = this.state.concat(state);
+      } else if (data.constructor === Array) {
+        this.data = this.data.concat(data);
       } else {
-        this.state = state;
+        this.data = data;
       }
 
-      var newTree = this.build();
-      var patches = this.constructor.diff(this.vDom, newTree);
-      this.element = this.constructor.patch(this.element, patches);
-      this.vDom = newTree;
+      var newTree = this.template();
+      var patches = this.constructor.diff(this.virtualNode, newTree);
+      this.HTMLElement = this.constructor.patch(this.HTMLElement, patches);
+      this.virtualNode = newTree;
 
       this.dispatch('update');
 
@@ -232,7 +230,7 @@ var NeoWidget = Class('NeoWidget').includes(CustomEvent, CustomEventSupport, Nod
         element : element
       });
 
-      element.appendChild(this.element);
+      element.appendChild(this.HTMLElement);
 
       this.dispatch('render');
       return this;

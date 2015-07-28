@@ -34,34 +34,34 @@ You need to specify the @docblock in the files where you use JSX: /** @jsx NeoWi
 /** @jsx NeoWidget.h */
 
 var Heading = Class('Heading').inherits(NeoWidget)({
-  state : {
+  data : {
     title : 'Heading Title'
   }
 
-  build : function() {
+  template : function() {
     return <div>
-            <h2>{this.state.title}</h2>
+            <h2>{this.data.title}</h2>
           </div>
   }
 });
 
 Class('Button').inherits(NeoWidget)({
   prototype : {
-    state : {
+    data : {
       title : 'Click Me!',
       count : 0
     },
-    build : function() {
+    template : function() {
       return  <div>
-                {new <Heading />.vDom}
-                <button onclick={this.clickHandler.bind(this)}>{this.state.title}</button>
-                <p>{'Clicks: ' + this.state.count}</p>
+                {new <Heading />.virtualNode}
+                <button onclick={this.clickHandler.bind(this)}>{this.data.title}</button>
+                <p>{'Clicks: ' + this.data.count}</p>
               </div>
     },
 
     clickHandler : function() {
-      this.state.count++
-      this.update(this.state);
+      this.data.count++
+      this.update(this.data);
     }
   }
 });

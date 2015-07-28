@@ -1,6 +1,6 @@
 {
   "name": "neowidget",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "Virtual DOM based Widget for Neon.js",
   "repository" : "https://github.com/sgarza/NeoWidget",
   "main": "index.js",
@@ -8,7 +8,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "react",
     "jsx",
     "transform",
     "webpack",
